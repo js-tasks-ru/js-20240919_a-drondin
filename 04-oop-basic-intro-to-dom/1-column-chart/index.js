@@ -50,7 +50,7 @@ export default class ColumnChart {
 
   createTemplate() {
     return `
-      <div class="column-chart" style="--chart-height: 50">
+      <div class="column-chart column-chart_loading" style="--chart-height: 50">
         <div class="column-chart__title">
           ${this.label}
           ${this.createLinkTemplate()}
@@ -71,15 +71,12 @@ export default class ColumnChart {
     const element = document.createElement("div");
     element.innerHTML = this.createTemplate();
 
-    const firstElementChild = element.firstElementChild;
-    firstElementChild.classList.add("column-chart_loading");
-
-    return firstElementChild;
+    return element.firstElementChild;
   }
 
   update(newData) {
     this.data = newData;
-    this.element.innerHTML = this.createElement();
+    this.element.innerHTML = this.createTemplate();
   }
 
   remove() {
