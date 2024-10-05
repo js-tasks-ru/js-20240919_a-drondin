@@ -15,8 +15,7 @@ export function createGetter(path) {
       if (result.hasOwnProperty(prop)) {
         result = result[prop];
       } else {
-        result = undefined;
-        break;
+        return;
       }
     }
 
